@@ -1,0 +1,37 @@
+.question-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.question-body {
+    padding: 20px;
+    background-color: white;
+    color: #000;
+    box-shadow: 1px 3px 9px 0px #ddd;
+    width: 70%;
+    /* margin: 20px auto 0; */
+}
+/*** score page ***/
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+.result {
+    margin-bottom: 10px;
+}
+.try-button {
+    border-radius: 10px;
+    border: none;
+    padding: 10px 40px;
+    color: #000;
+    background-color: #fff;
+}
+.try-button:hover {
+    background-color: #000;
+    color: #fff;
+}
