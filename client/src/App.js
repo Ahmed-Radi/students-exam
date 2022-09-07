@@ -10,7 +10,7 @@ function App() {
 	const [answer, setAnswer] = useState([]);
 	const [click, setClick] = useState(0);
 	const [percentage, setPercentage] = useState(0);
-    const [next, setNext] = useState(false)
+    const [next, setNext] = useState(true)
     const [selectedIsCorrect, setSelectedIsCorrect] = useState()
     const navigate = useNavigate();
 
@@ -21,19 +21,11 @@ function App() {
 	const handleClick = choose => {
         const newData = [...data.wordList];
         let word = newData?.splice(click, 1)[0]?.word;
-        setAnswer(prev => prev.concat({ word, choose: choose }));
-        setClick(prev => prev + 1);
+        setNext(prev => prev = false)
+        setAnswer(prev => prev.concat({ word, choose: choose, isCorrect: data?.wordList?.find((item) => word === item.word)?.pos === choose, }));
+        // setClick(prev => prev + 1);
         setSelectedIsCorrect(prev => prev = true)
 	};
-
-    const isCorrectFun = () => {
-        const output = answer.map(({ word, choose }) => ({
-            word,
-            choose,
-            isCorrect: data?.wordList?.find((item) => word === item.word)?.pos === choose,
-        }));
-        setAnswer(prev => prev = output);
-    }
 
     const calculateResult = () => {
         let score = answer?.reduce((prev, {word, choose}) => {
@@ -44,7 +36,6 @@ function App() {
 
     useEffect(() => {
         setSelectedIsCorrect(prev => prev = answer[click-1]?.isCorrect)
-        isCorrectFun()
         calculateResult()
     } , [click])
 
@@ -53,6 +44,7 @@ function App() {
 		setClick(prev => (prev = 0));
 		setAnswer(prev => (prev = []));
         setPercentage(0)
+        setNext(prev => prev = true)
 	};
 
 	return (
@@ -64,9 +56,11 @@ function App() {
 						<QuestionPage
 							data={data}
 							click={click}
+                            setClick={setClick}
 							handleClick={handleClick}
                             answer={answer}
                             selectedIsCorrect={selectedIsCorrect}
+                            next={next}
                             setNext={setNext}
 						/>
 					}
