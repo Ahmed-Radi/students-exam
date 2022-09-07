@@ -10,7 +10,7 @@ function AnswerList({  handleClick, answer, click, selectedIsCorrect }) {
             {
                 words.map((word,i) => (
                     <>
-                    <li key={word} onClick={_ => handleClick(word)}>{word} { answer[click-1]?.isCorrect ? <span>ahmed</span> : ''}</li>
+                    <li key={word} onClick={_ => handleClick(word)}>{word}</li>
                         {/* {console.log(word, answer[click]?.isCorrect)} */}
                     </>
                 ))
