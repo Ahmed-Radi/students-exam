@@ -4,16 +4,16 @@ import { Navigate } from "react-router-dom";
 import ProgressBar from "@ramonak/react-progress-bar";
 
 function QuestionPage({ data, handleClick, answer,setClick, click, next, setNext, selectedIsCorrect }) {
-    console.log(click,answer.length, data?.wordList?.length)
+    // console.log(click,answer.length, data?.wordList?.length)
 	const fun = () => {
         setClick(prev => prev + 1);
 		setNext(prev=> prev = true)
 	}
-	console.log(answer[click]?.isCorrect)
+	// console.log(answer[click]?.isCorrect)
 	return (
 		<div className="question-container">
 			<div className='question-body'>
-				{answer.length === data?.wordList?.length ? (
+				{answer.length +1 === data?.wordList?.length +1 ? (
                         <Navigate to="/score" />
 				) : (
 					<>
