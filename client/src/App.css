@@ -1,37 +1,14 @@
-.question-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-.question-body {
-    padding: 20px;
-    background-color: white;
-    color: #000;
-    box-shadow: 1px 3px 9px 0px #ddd;
-    width: 70%;
-    /* margin: 20px auto 0; */
-}
-/*** score page ***/
-
-.score-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-}
-.result {
+.answer-list__item {
     margin-bottom: 10px;
-}
-.try-button {
+    padding: 10px;
     border-radius: 10px;
-    border: none;
-    padding: 10px 40px;
+    background-color: #ddd;
     color: #000;
-    background-color: #fff;
+    text-transform: capitalize;
+    transition: all 0.5s ease-in-out;
 }
-.try-button:hover {
+.answer-list__item:hover {
     background-color: #000;
-    color: #fff;
+    color: #ddd;
+    transition: all 0.5s ease-in-out;
 }

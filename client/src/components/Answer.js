@@ -1,9 +1,10 @@
-import AnswerList from './AnswerList'
+import AnswerList from './AnswerList';
 
-function Answer({ handleClick, answer, click, selectedIsCorrect }) {
+function Answer({ handleClick, refHight, answer, click, selectedIsCorrect }) {
+
     return (
         <>
-            <ul>
+            <ul className="answer-list" ref={refHight}>
                 <AnswerList answer={answer} click={click} selectedIsCorrect={selectedIsCorrect} handleClick={handleClick} />
             </ul>
         </>

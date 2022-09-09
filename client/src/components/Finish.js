@@ -1,9 +1,15 @@
-import React from 'react'
+import axios from "axios"
+import { useEffect } from "react"
 
 function Finish({ percentage, tryAgain }) {
+    useEffect(() => {
+        if (!isNaN(percentage)) {
+            axios.get(`localhost:4001/score/${percentage}`)
+        }
+    },[tryAgain])
     return (
         <>
-            <div className='result'>your result is {percentage}</div>
+            <div className='result'>your result is <span className="result__score">{percentage}</span></div>
             <button className='try-button' onClick={tryAgain}>try again</button>
         </>
     )

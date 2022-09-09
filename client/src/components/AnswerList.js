@@ -1,17 +1,13 @@
-import { useEffect, useRef } from "react"
+import './AnswerList.css';
 
-function AnswerList({  handleClick, answer, click, selectedIsCorrect }) {
+function AnswerList({  handleClick }) {
     const words = ["adjective", "noun", "verb", "adverb"]
-    const wrong = {
-        background: 'red',
-    }
     return (
         <>
             {
                 words.map((word,i) => (
                     <>
-                    <li key={word} onClick={_ => handleClick(word)}>{word}</li>
-                        {/* {console.log(word, answer[click]?.isCorrect)} */}
+                        <li className="answer-list__item" key={i} onClick={_ => handleClick(word)}>{word}</li>
                     </>
                 ))
             }

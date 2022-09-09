@@ -1,5 +1,5 @@
-import React from 'react'
-import Finish from '../components/Finish'
+import Finish from '../components/Finish';
+import './ScorePage.css';
 
 function ScorePage({ percentage, tryAgain }) {
     return (

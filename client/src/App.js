@@ -19,19 +19,23 @@ function App() {
 	}, []);
 
 	const handleClick = choose => {
-        const newData = [...data.wordList];
+        const newData = [...data];
         let word = newData?.splice(click, 1)[0]?.word;
         setNext(prev => prev = false)
+<<<<<<< Updated upstream
         setAnswer(prev => prev.concat({ word, choose: choose, isCorrect: data?.wordList?.find((item) => word === item.word)?.pos === choose, }));
+=======
+        setAnswer(prev => prev.concat({ word, choose: choose, isCorrect: data?.find((item) => word === item.word)?.pos === choose, }));
+>>>>>>> Stashed changes
         // setClick(prev => prev + 1);
         setSelectedIsCorrect(prev => prev = true)
 	};
 
     const calculateResult = () => {
         let score = answer?.reduce((prev, {word, choose}) => {
-            return data?.wordList.find(item => word === item.word)?.pos === choose ? prev + 1 : prev
+            return data?.find(item => word === item.word)?.pos === choose ? prev + 1 : prev
         }, 0)
-        setPercentage(prev => prev = ((score / data?.wordList?.length)* 100).toFixed(0))
+        setPercentage(prev => prev = ((score / data?.length)* 100).toFixed(0))
     }
 
     useEffect(() => {
