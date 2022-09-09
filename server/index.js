@@ -25,6 +25,30 @@ app.get('/', (err, res) => {
             result[n] = jsonData?.wordList[item in taken ? taken[item] : item];
             taken[item] = --len in taken ? taken[len] : len;
         }
+        let verb = 0,
+        adjective = 0,
+        noun = 0,
+        adverb= 0;
+        result.map((r) => {
+            if (r.pos === 'verb') {
+                verb++;
+                console.log(verb)
+            } else if (r.pos === 'adjective') {
+                adjective++;
+                console.log(adjective)
+            }
+            else if (r.pos === 'noun') {
+                noun++;
+                console.log(noun)
+            }
+            else if (r.pos === 'adverb') {
+                adverb++;
+                console.log(adverb)
+            }
+        })
+        if ( verb === 0 || adjective === 0 || noun === 0 || adverb === 0 ) {
+            getRandom(jsonData, 10)
+        }
         return result;
     }
 });

@@ -23,7 +23,7 @@ function QuestionPage({ data, handleClick, answer,setClick, click, next, setNext
 	return (
 		<div className="question-container">
 			<div className='question-body'>
-				{answer.length === data?.length && next ? (
+				{answer.length === data?.length && data?.length !== 0 && next ? (
                         <Navigate to="/score" />
 				) : (
 					<>

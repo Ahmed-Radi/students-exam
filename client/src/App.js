@@ -22,11 +22,7 @@ function App() {
         const newData = [...data];
         let word = newData?.splice(click, 1)[0]?.word;
         setNext(prev => prev = false)
-<<<<<<< Updated upstream
-        setAnswer(prev => prev.concat({ word, choose: choose, isCorrect: data?.wordList?.find((item) => word === item.word)?.pos === choose, }));
-=======
         setAnswer(prev => prev.concat({ word, choose: choose, isCorrect: data?.find((item) => word === item.word)?.pos === choose, }));
->>>>>>> Stashed changes
         // setClick(prev => prev + 1);
         setSelectedIsCorrect(prev => prev = true)
 	};
