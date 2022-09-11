@@ -1,8 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const fs = require('fs');
 const app = express()
 const cors = require('cors')
-
+app.use(express.json());
 const PORT = 4001
 app.use(cors())
 
@@ -32,18 +33,14 @@ app.get('/', (err, res) => {
         result.map((r) => {
             if (r.pos === 'verb') {
                 verb++;
-                console.log(verb)
             } else if (r.pos === 'adjective') {
                 adjective++;
-                console.log(adjective)
             }
             else if (r.pos === 'noun') {
                 noun++;
-                console.log(noun)
             }
             else if (r.pos === 'adverb') {
                 adverb++;
-                console.log(adverb)
             }
         })
         if ( verb === 0 || adjective === 0 || noun === 0 || adverb === 0 ) {
@@ -53,8 +50,24 @@ app.get('/', (err, res) => {
     }
 });
 
-app.post("/score/:score", (req, res) => {
-    console.log(req.params.score)
+app.post("/score", (req, res) => {
+    const score = req.body.score
+    console.log(score)
+    if (req.body !== undefined) {
+        let rawData = fs.readFileSync('TestData.json');
+        let student = JSON.parse(rawData);
+        let newArray = student.scoresList;
+
+        newArray = [...newArray, score]
+        try {
+            fs.writeFileSync('./TestData.txt', {scoresList: newArray});
+            // file written successfully
+        } catch (err) {
+            console.error(err);
+        }
+        console.log(newArray);
+    }
+        res.status(200).sendStatus(score)
 })
 
 app.listen(PORT, () => {

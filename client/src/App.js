@@ -40,11 +40,16 @@ function App() {
     } , [click])
 
 	const tryAgain = () => {
+        if (!isNaN(percentage)) {
+            console.log(percentage)
+            axios.post(`http://localhost:4001/score`, {score: percentage})
+        }
         navigate('/');
 		setClick(prev => (prev = 0));
 		setAnswer(prev => (prev = []));
         setPercentage(0)
         setNext(prev => prev = true)
+
 	};
 
 	return (
